@@ -1,0 +1,23 @@
+name: React Todo
+on:
+  push:
+    branches:
+      main  # Trigger the workflow on pushes to the main branch
+  pull_request:
+    branches:
+      main  # Trigger the workflow on pull requests to the main branch
+
+jobs:
+  build:  # Define a job named 'build'
+    runs-on: macos-latest  # Specify the runner environment (Ubuntu latest)
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3  # Set up Node.js with a specified version
+        with:
+          node-version: '20.x' # Example: Use Node.js version 20 (adjust if needed)
+
+      - name: Install dependencies
+        run: npm install
+      - name: Build React app
+        run: npm run build  # Build the React application
